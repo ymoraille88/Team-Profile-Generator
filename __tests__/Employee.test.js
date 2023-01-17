@@ -5,16 +5,18 @@ describe("Employee", () => {
         const name = "Henry";
         const employee = new Employee(name);
        
-        expect(employee.name).toEqual();
+        expect(employee.name).toEqual(name);
       });
       it("should have an id", () => {
+        const id = 2425;
         const employee = new Employee(name);
        
-        expect(employee.id).toEqual(2425);
+        expect(employee.id).toEqual(id);
     });
     it("should have an email", () => {
+        const email = "pinmpin40@gmail.com";
         const employee = new Employee(name);
        
-        expect(employee.email).toEqual("pinmpin40@hotmail.com");
+        expect(employee.email).toEqual(email);
     });
 });
