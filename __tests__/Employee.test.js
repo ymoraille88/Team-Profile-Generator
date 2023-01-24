@@ -19,4 +19,10 @@ describe("Employee", () => {
        
         expect(employee.email).toEqual(email);
     });
+    it("should have a role", () => {
+        const role = "Manager";
+        const employee = new Employee(name);
+       
+        expect(employee.role).toEqual(role);
+    });
 });
