@@ -3,7 +3,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Employee = require('./lib/Employee');
 const fs = require ('fs');
-const generateTeam = require ('./template')
+const generateTeam = require ('./template');
 
 
 
