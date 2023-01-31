@@ -7,7 +7,7 @@ describe("Intern", () => {
         const intern = new Intern ("Zarah", 23, "Zarah@gmail.com", schoolName);
 
 
-            expect(engineer.schoolName).toEqual(schoolName);
+            expect(intern.schoolName).toEqual(schoolName);
     });
 
 });
