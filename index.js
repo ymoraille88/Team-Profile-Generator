@@ -1,11 +1,12 @@
 const inquirer = require('inquirer');
+const path = require('path');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Employee = require('./lib/Employee');
 const fs = require('fs');
-const generateTeam = require('./template');
-const { inherits } = require('util');
+const generateTeam = require('./src/page-template');
+
 
 const baseQuestions = [
   {
@@ -43,8 +44,10 @@ const internQuestion = {
   name: 'schoolName',
 };
 
+const team = [];
+
 const createEmployee = (type) => {
-  const empQuestions = { 
+  const empQuestions = {
     manager: managerQuestion,
     engineer: engineerQuestion,
     intern: internQuestion,
@@ -52,6 +55,17 @@ const createEmployee = (type) => {
   inquirer.prompt(baseQuestions.concat(empQuestions[type])).then((answers) => {
     // ADD EMPLOYEE TO EMPLOYEE LIST
     // console.log(answers);
+    let holder;
+    if (answers.officeNumber) {
+      holder = answers.officeNumber;
+    } else if (answers.school){
+      holder = answers.school
+    } else {
+      holder = answers.github
+    }
+
+    const manager = new Manager(answers.name, answers.id, answers.email, holder);
+    team.push(manager);
     inquirer.prompt({
       name: 'addAnother',
       type: 'confirm',
@@ -69,13 +83,18 @@ const createEmployee = (type) => {
           ]
         }).then(({ type }) => {
           if (type === 'exit') {
-            // WRITE TO FILE
+            fs.writeFile(path.join(process.cwd(),"dist/team.html"), generateTeam(team), function(err, result) {
+              if(err) console.log('error', err);
+            })
+            
+            console.log("have a good day!");
           } else {
             createEmployee(type);
           }
         });
       } else {
-        // WRITE TO FILE
+        fs.writeFile(path.join(process.cwd(),"dist/team.html"), generateTeam(team))
+      
       }
     });
   });
