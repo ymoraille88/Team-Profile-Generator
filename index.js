@@ -72,6 +72,7 @@ const createEmployee = (type) => {
       message: 'would you like to add another employee',
     }).then(({ addAnother }) => {
       if (addAnother) {
+        
         inquirer.prompt({
           type: 'rawlist',
           name: 'type',
@@ -93,7 +94,9 @@ const createEmployee = (type) => {
           }
         });
       } else {
-        fs.writeFile(path.join(process.cwd(),"dist/team.html"), generateTeam(team))
+        fs.writeFile(path.join(process.cwd(),"dist/team.html"), generateTeam(team), function (err, result) {
+          if(err) console.log('error', err);
+        })
       
       }
     });
