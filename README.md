@@ -23,9 +23,10 @@ This app uses Technologies such as Node, Inquirer.
 
 ## Link
 
+[Website] (https://drive.google.com/file/d/18ikkSmUlfJfHdLeIpxroYv-S51seYO19/view)
 
 ## Visuals
-
+[Homepage](../Team-Profile-Generator/asset/images/Screenshot%202023-02-15%20at%206.54.20%20PM.png)
 
 
 
